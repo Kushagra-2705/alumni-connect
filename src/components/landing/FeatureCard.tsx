@@ -4,15 +4,11 @@ interface FeatureCardProps {
   icon: LucideIcon;
   title: string;
   description: string;
-  delay?: number;
 }
 
-const FeatureCard = ({ icon: Icon, title, description, delay = 0 }: FeatureCardProps) => {
+const FeatureCard = ({ icon: Icon, title, description }: FeatureCardProps) => {
   return (
-    <div 
-      className="group relative p-6 md:p-8 rounded-2xl bg-gradient-card border border-border/50 shadow-card hover:shadow-elevated hover:-translate-y-1 transition-all duration-300 animate-slide-up"
-      style={{ animationDelay: `${delay}ms` }}
-    >
+    <div className="group relative h-full p-6 md:p-8 rounded-2xl bg-gradient-card border border-border/50 shadow-card hover:shadow-elevated hover:-translate-y-1 transition-all duration-300">
       {/* Hover glow effect */}
       <div className="absolute inset-0 rounded-2xl bg-gradient-primary opacity-0 group-hover:opacity-5 transition-opacity duration-300" />
       

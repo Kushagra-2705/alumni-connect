@@ -1,4 +1,5 @@
 import { UserPlus, Search, Handshake, Rocket } from "lucide-react";
+import ScrollReveal from "@/components/ui/ScrollReveal";
 
 const HowItWorks = () => {
   const steps = [
@@ -35,7 +36,7 @@ const HowItWorks = () => {
 
       <div className="container relative mx-auto px-4 md:px-6">
         {/* Section header */}
-        <div className="text-center max-w-2xl mx-auto mb-12 md:mb-16">
+        <ScrollReveal className="text-center max-w-2xl mx-auto mb-12 md:mb-16">
           <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
             How It Works
           </span>
@@ -45,15 +46,16 @@ const HowItWorks = () => {
           <p className="text-body text-muted-foreground">
             Building meaningful professional relationships has never been easier.
           </p>
-        </div>
+        </ScrollReveal>
 
         {/* Steps */}
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {steps.map((step, index) => (
-            <div
+            <ScrollReveal
               key={step.title}
-              className="relative text-center animate-slide-up"
-              style={{ animationDelay: `${index * 100}ms` }}
+              delay={index * 150}
+              variant="fade-up"
+              className="relative text-center"
             >
               {/* Connector line (hidden on mobile and last item) */}
               {index < steps.length - 1 && (
@@ -71,7 +73,7 @@ const HowItWorks = () => {
               {/* Content */}
               <h3 className="text-h3 text-foreground mb-3">{step.title}</h3>
               <p className="text-body text-muted-foreground">{step.description}</p>
-            </div>
+            </ScrollReveal>
           ))}
         </div>
       </div>

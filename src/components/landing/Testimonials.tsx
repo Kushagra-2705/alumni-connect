@@ -1,5 +1,6 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Quote } from "lucide-react";
+import ScrollReveal from "@/components/ui/ScrollReveal";
 
 const Testimonials = () => {
   const testimonials = [
@@ -32,7 +33,7 @@ const Testimonials = () => {
       
       <div className="container relative mx-auto px-4 md:px-6">
         {/* Section header */}
-        <div className="text-center max-w-2xl mx-auto mb-12 md:mb-16">
+        <ScrollReveal className="text-center max-w-2xl mx-auto mb-12 md:mb-16">
           <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
             Testimonials
           </span>
@@ -42,36 +43,38 @@ const Testimonials = () => {
           <p className="text-body text-muted-foreground">
             See how our community members are building connections and advancing their careers.
           </p>
-        </div>
+        </ScrollReveal>
 
         {/* Testimonial grid */}
         <div className="grid md:grid-cols-3 gap-6">
           {testimonials.map((testimonial, index) => (
-            <div
+            <ScrollReveal
               key={testimonial.name}
-              className="relative p-6 md:p-8 rounded-2xl bg-gradient-card border border-border/50 shadow-card hover:shadow-elevated transition-all duration-300 animate-slide-up"
-              style={{ animationDelay: `${index * 100}ms` }}
+              delay={index * 100}
+              variant="fade-up"
             >
-              {/* Quote icon */}
-              <Quote className="w-10 h-10 text-primary/20 mb-4" />
-              
-              {/* Quote text */}
-              <p className="text-foreground mb-6 leading-relaxed">
-                "{testimonial.quote}"
-              </p>
+              <div className="relative h-full p-6 md:p-8 rounded-2xl bg-gradient-card border border-border/50 shadow-card hover:shadow-elevated transition-all duration-300">
+                {/* Quote icon */}
+                <Quote className="w-10 h-10 text-primary/20 mb-4" />
+                
+                {/* Quote text */}
+                <p className="text-foreground mb-6 leading-relaxed">
+                  "{testimonial.quote}"
+                </p>
 
-              {/* Author */}
-              <div className="flex items-center gap-3">
-                <Avatar className="w-12 h-12 border-2 border-primary/30">
-                  <AvatarImage src={testimonial.avatar} alt={testimonial.name} />
-                  <AvatarFallback>{testimonial.initials}</AvatarFallback>
-                </Avatar>
-                <div>
-                  <div className="font-semibold text-foreground">{testimonial.name}</div>
-                  <div className="text-sm text-muted-foreground">{testimonial.role}</div>
+                {/* Author */}
+                <div className="flex items-center gap-3">
+                  <Avatar className="w-12 h-12 border-2 border-primary/30">
+                    <AvatarImage src={testimonial.avatar} alt={testimonial.name} />
+                    <AvatarFallback>{testimonial.initials}</AvatarFallback>
+                  </Avatar>
+                  <div>
+                    <div className="font-semibold text-foreground">{testimonial.name}</div>
+                    <div className="text-sm text-muted-foreground">{testimonial.role}</div>
+                  </div>
                 </div>
               </div>
-            </div>
+            </ScrollReveal>
           ))}
         </div>
       </div>
