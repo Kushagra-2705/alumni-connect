@@ -1,3 +1,5 @@
+import ScrollReveal from "@/components/ui/ScrollReveal";
+
 const Stats = () => {
   const stats = [
     { value: "10K+", label: "Verified Alumni" },
@@ -13,10 +15,11 @@ const Stats = () => {
       <div className="container relative mx-auto px-4 md:px-6">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
           {stats.map((stat, index) => (
-            <div
+            <ScrollReveal
               key={stat.label}
-              className="text-center animate-fade-in"
-              style={{ animationDelay: `${index * 100}ms` }}
+              delay={index * 100}
+              variant="scale"
+              className="text-center"
             >
               <div className="text-4xl md:text-5xl font-bold text-gradient mb-2">
                 {stat.value}
@@ -24,7 +27,7 @@ const Stats = () => {
               <div className="text-sm md:text-base text-muted-foreground font-medium">
                 {stat.label}
               </div>
-            </div>
+            </ScrollReveal>
           ))}
         </div>
       </div>

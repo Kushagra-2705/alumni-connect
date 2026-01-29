@@ -1,5 +1,6 @@
 import { Users, Briefcase, BookOpen, MessageCircle } from "lucide-react";
 import FeatureCard from "./FeatureCard";
+import ScrollReveal from "@/components/ui/ScrollReveal";
 
 const Features = () => {
   const features = [
@@ -33,7 +34,7 @@ const Features = () => {
 
       <div className="container relative mx-auto px-4 md:px-6">
         {/* Section header */}
-        <div className="text-center max-w-2xl mx-auto mb-12 md:mb-16">
+        <ScrollReveal className="text-center max-w-2xl mx-auto mb-12 md:mb-16">
           <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
             Features
           </span>
@@ -44,18 +45,18 @@ const Features = () => {
             From finding mentors to landing dream jobs, we've built all the tools 
             you need to leverage your alumni network effectively.
           </p>
-        </div>
+        </ScrollReveal>
 
         {/* Feature grid */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {features.map((feature, index) => (
-            <FeatureCard
-              key={feature.title}
-              icon={feature.icon}
-              title={feature.title}
-              description={feature.description}
-              delay={index * 100}
-            />
+            <ScrollReveal key={feature.title} delay={index * 100} variant="fade-up">
+              <FeatureCard
+                icon={feature.icon}
+                title={feature.title}
+                description={feature.description}
+              />
+            </ScrollReveal>
           ))}
         </div>
       </div>
