@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Menu, X, GraduationCap } from "lucide-react";
 
@@ -39,11 +40,11 @@ const Navbar = () => {
 
           {/* Desktop CTA */}
           <div className="hidden md:flex items-center gap-3">
-            <Button variant="ghost" size="default">
-              Log In
+            <Button variant="ghost" size="default" asChild>
+              <Link to="/login">Log In</Link>
             </Button>
-            <Button variant="hero" size="default" className="rounded-full">
-              Join Now
+            <Button variant="hero" size="default" className="rounded-full" asChild>
+              <Link to="/signup">Join Now</Link>
             </Button>
           </div>
 
@@ -71,11 +72,11 @@ const Navbar = () => {
                 </a>
               ))}
               <div className="flex flex-col gap-3 pt-4 border-t border-border/50">
-                <Button variant="outline" className="w-full">
-                  Log In
+                <Button variant="outline" className="w-full" asChild>
+                  <Link to="/login" onClick={() => setIsOpen(false)}>Log In</Link>
                 </Button>
-                <Button variant="hero" className="w-full rounded-full">
-                  Join Now
+                <Button variant="hero" className="w-full rounded-full" asChild>
+                  <Link to="/signup" onClick={() => setIsOpen(false)}>Join Now</Link>
                 </Button>
               </div>
             </div>
