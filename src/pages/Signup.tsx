@@ -1,11 +1,13 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { GraduationCap, Eye, EyeOff, Mail, Lock, User, BookOpen, Briefcase } from "lucide-react";
+import { useAuth } from "@/contexts/AuthContext";
+import { toast } from "@/hooks/use-toast";
 
 const Signup = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -16,12 +18,35 @@ const Signup = () => {
     role: "student" as "student" | "alumni",
   });
   const [isLoading, setIsLoading] = useState(false);
+  const { signUp } = useAuth();
+  const navigate = useNavigate();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
-    // TODO: Implement actual authentication
-    setTimeout(() => setIsLoading(false), 1000);
+
+    const { error } = await signUp(
+      formData.email,
+      formData.password,
+      formData.name,
+      formData.role
+    );
+
+    if (error) {
+      toast({
+        title: "Signup failed",
+        description: error.message,
+        variant: "destructive",
+      });
+    } else {
+      toast({
+        title: "Account created!",
+        description: "Please check your email to verify your account before signing in.",
+      });
+      navigate("/login");
+    }
+
+    setIsLoading(false);
   };
 
   const updateField = (field: string, value: string) => {
